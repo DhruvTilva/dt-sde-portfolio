@@ -6,7 +6,6 @@ import { personalInfo } from '@/data/personal';
 const socialLinks = [
   { icon: Github, href: personalInfo.github, label: 'GitHub' },
   { icon: Linkedin, href: personalInfo.linkedin, label: 'LinkedIn' },
-  { icon: Send, href: personalInfo.telegram, label: 'Telegram' },
   { icon: Mail, href: `mailto:${personalInfo.email}`, label: 'Email' },
 ];
 
