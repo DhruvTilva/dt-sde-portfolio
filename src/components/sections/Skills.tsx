@@ -68,7 +68,7 @@ export default function Skills() {
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
-    <section id="skills" className="relative py-24 lg:py-32">
+    <section id="skills" className="relative py-16 lg:py-24">
       {/* Background decoration */}
       <div className="absolute left-0 top-1/3 h-[600px] w-[600px] rounded-full bg-secondary/3 blur-[180px]" />
 

@@ -13,7 +13,7 @@ export default function About() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section id="about" className="relative py-24 lg:py-32">
+    <section id="about" className="relative py-16 lg:py-24">
       {/* Background decoration */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-primary/3 blur-[150px]" />
 
@@ -91,7 +91,7 @@ export default function About() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.3 + i * 0.1, duration: 0.6 }}
-                  className="text-base leading-relaxed text-muted sm:text-lg"
+                  className="text-sm leading-relaxed text-muted sm:text-base"
                 >
                   {paragraph}
                 </motion.p>
@@ -138,7 +138,7 @@ export default function About() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.8, duration: 0.7 }}
-          className="mt-20 grid grid-cols-2 gap-8 rounded-2xl border border-border bg-surface/30 p-8 backdrop-blur-sm md:grid-cols-4"
+          className="mt-12 grid grid-cols-2 gap-8 rounded-2xl border border-border bg-surface/30 p-6 backdrop-blur-sm md:grid-cols-4"
         >
           {personalInfo.stats.map((stat) => (
             <AnimatedCounter

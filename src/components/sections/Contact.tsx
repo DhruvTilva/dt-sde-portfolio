@@ -69,7 +69,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-24 lg:py-32">
+    <section id="contact" className="relative py-16 lg:py-24">
       {/* Background */}
       <div className="absolute left-1/3 top-1/4 h-[500px] w-[500px] rounded-full bg-primary/3 blur-[150px]" />
       <div className="absolute right-1/4 bottom-1/4 h-[400px] w-[400px] rounded-full bg-accent/3 blur-[120px]" />
@@ -84,7 +84,7 @@ export default function Contact() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h3 className="font-heading text-2xl font-bold text-white sm:text-3xl">
+            <h3 className="font-heading text-xl font-bold text-white sm:text-2xl">
               Have an idea or project?
               <span className="ml-2 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
                 Let&apos;s connect

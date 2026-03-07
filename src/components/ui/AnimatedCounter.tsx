@@ -54,7 +54,7 @@ export default function AnimatedCounter({
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className="text-center"
     >
-      <div className="text-4xl font-bold font-heading bg-gradient-to-r from-primary-light via-secondary to-accent bg-clip-text text-transparent md:text-5xl">
+      <div className="text-3xl font-bold font-heading bg-gradient-to-r from-primary-light via-secondary to-accent bg-clip-text text-transparent md:text-4xl">
         {count}
         {suffix}
       </div>

@@ -153,7 +153,7 @@ export default function Projects() {
       : projects.filter((p) => p.category === activeFilter);
 
   return (
-    <section id="projects" className="relative py-24 lg:py-32">
+    <section id="projects" className="relative py-16 lg:py-24">
       {/* Background decoration */}
       <div className="absolute left-1/4 top-1/3 h-[600px] w-[600px] rounded-full bg-primary/3 blur-[180px]" />
 

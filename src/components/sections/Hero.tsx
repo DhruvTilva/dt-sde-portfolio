@@ -53,7 +53,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center overflow-hidden"
+      className="relative flex min-h-screen items-center overflow-hidden pt-20"
     >
       {/* 3D Background */}
       <HeroScene />
@@ -87,7 +87,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 2.1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-heading text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl"
+            className="font-heading text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl xl:text-7xl"
           >
             <span className="bg-gradient-to-r from-white via-white to-slate-400 bg-clip-text text-transparent">
               {personalInfo.name}
@@ -99,7 +99,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 2.3, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-4 font-heading text-xl text-primary-light sm:text-2xl lg:text-3xl"
+            className="mt-3 font-heading text-lg text-primary-light sm:text-xl lg:text-2xl xl:text-3xl"
           >
             <TypingAnimation words={personalInfo.roles} />
           </motion.div>
@@ -109,7 +109,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 2.5 }}
-            className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
+            className="mt-4 max-w-xl text-sm leading-relaxed text-muted sm:text-base lg:text-lg"
           >
             {personalInfo.tagline}
           </motion.p>
@@ -119,7 +119,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 2.7 }}
-            className="mt-10 flex flex-wrap items-center gap-4"
+            className="mt-6 flex flex-wrap items-center gap-3"
           >
             <MagneticButton
               href="#projects"
@@ -152,7 +152,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 3 }}
-            className="mt-12 flex items-center gap-4"
+            className="mt-8 flex items-center gap-4"
           >
             {[
               { icon: Github, href: personalInfo.github, label: 'GitHub' },

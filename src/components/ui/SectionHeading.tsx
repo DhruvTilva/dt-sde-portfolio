@@ -23,7 +23,7 @@ export default function SectionHeading({
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className={`mb-16 ${align === 'center' ? 'text-center' : 'text-left'}`}
+      className={`mb-10 ${align === 'center' ? 'text-center' : 'text-left'}`}
     >
       <motion.span
         initial={{ opacity: 0 }}
@@ -33,7 +33,7 @@ export default function SectionHeading({
       >
         {subtitle}
       </motion.span>
-      <h2 className="font-heading text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+      <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
         {title}
       </h2>
       <motion.div

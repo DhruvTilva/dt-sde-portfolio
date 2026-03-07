@@ -48,10 +48,10 @@ function TimelineItem({
       >
         {/* Header */}
         <div className="mb-4">
-          <h3 className="font-heading text-xl font-bold text-white">
+          <h3 className="font-heading text-lg font-bold text-white">
             {experience.role}
           </h3>
-          <p className="mt-1 text-base font-medium text-primary-light">
+          <p className="mt-1 text-sm font-medium text-primary-light">
             {experience.company}
           </p>
           <div className="mt-2 flex flex-wrap items-center gap-4 text-sm text-muted">
@@ -97,7 +97,7 @@ function TimelineItem({
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative py-24 lg:py-32">
+    <section id="experience" className="relative py-16 lg:py-24">
       {/* Background decoration */}
       <div className="absolute right-0 top-1/4 h-[500px] w-[500px] rounded-full bg-accent/3 blur-[150px]" />
 

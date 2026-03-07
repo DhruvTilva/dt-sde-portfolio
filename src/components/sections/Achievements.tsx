@@ -28,7 +28,7 @@ export default function Achievements() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section id="achievements" className="relative py-24 lg:py-32">
+    <section id="achievements" className="relative py-16 lg:py-24">
       {/* Background decoration */}
       <div className="absolute right-1/4 bottom-1/4 h-[500px] w-[500px] rounded-full bg-secondary/3 blur-[150px]" />
 
