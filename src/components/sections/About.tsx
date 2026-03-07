@@ -32,11 +32,13 @@ export default function About() {
               {/* Abstract avatar placeholder */}
               <div className="relative aspect-square overflow-hidden rounded-2xl border border-border bg-surface">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/20" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="font-heading text-8xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                    {personalInfo.initials}
-                  </span>
-                </div>
+                <div className="absolute inset-0">
+                <img
+                  src="/images/my_img.jpg"
+                  alt="Dhruv Tilva"
+                  className="h-full w-full object-cover"
+                />
+              </div>
                 {/* Grid pattern overlay */}
                 <div
                   className="absolute inset-0 opacity-10"
@@ -120,12 +122,12 @@ export default function About() {
               className="mt-8"
             >
               <MagneticButton
-                href={personalInfo.resumeUrl}
+                href="https://drive.google.com/file/d/1LcYZTkgjJ-WgXXOOE6tmnVwYH-rkqUP3/view"
                 variant="secondary"
                 size="md"
               >
                 <Download className="h-4 w-4" />
-                Download Resume
+                View Resume
               </MagneticButton>
             </motion.div>
           </motion.div>

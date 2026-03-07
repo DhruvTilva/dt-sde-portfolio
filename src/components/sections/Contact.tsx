@@ -85,14 +85,14 @@ export default function Contact() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
             <h3 className="font-heading text-2xl font-bold text-white sm:text-3xl">
-              Let&apos;s Build Something{' '}
-              <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                Amazing
+              Have an idea or project?
+              <span className="ml-2 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                Let&apos;s connect
               </span>{' '}
-              Together
+              and bring it to life.
             </h3>
             <p className="mt-4 text-base leading-relaxed text-muted">
-              Have an idea or project? Let&apos;s connect and bring it to life.
+              
             </p>
 
             {/* Contact methods */}
