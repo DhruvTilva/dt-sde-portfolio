@@ -97,11 +97,11 @@ function TimelineItem({
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative py-16 lg:py-24">
+    <section id="experience" className="relative w-full overflow-hidden py-16 lg:py-24">
       {/* Background decoration */}
       <div className="absolute right-0 top-1/4 h-[500px] w-[500px] rounded-full bg-accent/3 blur-[150px]" />
 
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading title="Experience" subtitle="// where I've worked" />
 
         <div className="relative">
@@ -109,7 +109,7 @@ export default function Experience() {
           <div className="absolute left-6 top-0 bottom-0 w-[1px] bg-gradient-to-b from-primary/40 via-secondary/30 to-transparent lg:left-1/2 lg:-translate-x-[0.5px]" />
 
           {/* Timeline items */}
-          <div className="space-y-12">
+          <div className="space-y-8 lg:space-y-12">
             {experiences.map((exp, index) => (
               <TimelineItem key={exp.id} experience={exp} index={index} />
             ))}

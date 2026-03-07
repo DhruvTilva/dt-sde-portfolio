@@ -69,12 +69,12 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-16 lg:py-24">
+    <section id="contact" className="relative w-full overflow-hidden py-16 lg:py-24">
       {/* Background */}
       <div className="absolute left-1/3 top-1/4 h-[500px] w-[500px] rounded-full bg-primary/3 blur-[150px]" />
       <div className="absolute right-1/4 bottom-1/4 h-[400px] w-[400px] rounded-full bg-accent/3 blur-[120px]" />
 
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading title="Get in Touch" subtitle="// let's connect" />
 
         <div ref={ref} className="grid gap-12 lg:grid-cols-2 lg:gap-16">

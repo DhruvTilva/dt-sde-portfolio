@@ -63,7 +63,7 @@ export default function Navbar() {
             : 'bg-transparent'
         )}
       >
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
           {/* Logo */}
           <motion.a
             href="#"
@@ -137,9 +137,9 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center overflow-hidden bg-background backdrop-blur-xl md:hidden"
           >
-            <nav className="flex h-full flex-col items-center justify-center gap-6">
+            <nav className="flex w-full flex-col items-center justify-center gap-5 px-6">
               {navLinks.map((link, i) => (
                 <motion.button
                   key={link.href}
@@ -148,7 +148,7 @@ export default function Navbar() {
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ delay: i * 0.08, duration: 0.4 }}
                   onClick={() => handleNavClick(link.href)}
-                  className="font-heading text-2xl font-medium text-white transition-colors hover:text-primary-light"
+                  className="w-full max-w-xs rounded-xl py-2 text-center font-heading text-xl font-medium text-white transition-colors hover:text-primary-light"
                 >
                   {link.label}
                 </motion.button>
@@ -163,7 +163,7 @@ export default function Navbar() {
                   e.preventDefault();
                   handleNavClick('#contact');
                 }}
-                className="mt-4 rounded-xl bg-gradient-to-r from-primary to-secondary px-8 py-3 font-medium text-white"
+                className="mt-2 w-full max-w-xs rounded-xl bg-gradient-to-r from-primary to-secondary py-3 text-center font-medium text-white"
               >
                 Let&apos;s Talk
               </motion.a>

@@ -153,15 +153,15 @@ export default function Projects() {
       : projects.filter((p) => p.category === activeFilter);
 
   return (
-    <section id="projects" className="relative py-16 lg:py-24">
+    <section id="projects" className="relative w-full overflow-hidden py-16 lg:py-24">
       {/* Background decoration */}
       <div className="absolute left-1/4 top-1/3 h-[600px] w-[600px] rounded-full bg-primary/3 blur-[180px]" />
 
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading title="Projects" subtitle="// what I've built" />
 
         {/* Filter buttons */}
-        <div className="mb-12 flex flex-wrap justify-center gap-2">
+        <div className="mb-8 flex flex-wrap justify-center gap-2">
           {categories.map((cat) => (
             <button
               key={cat}

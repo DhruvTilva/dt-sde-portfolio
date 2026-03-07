@@ -53,7 +53,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center overflow-hidden pt-20"
+      className="relative flex min-h-[100svh] w-full items-center overflow-hidden pt-16 sm:pt-20"
     >
       {/* 3D Background */}
       <HeroScene />
@@ -67,17 +67,17 @@ export default function Hero() {
       <div className="absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-accent/5 blur-[128px]" />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6">
         <div className="max-w-3xl">
           {/* Greeting */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 2 }}
-            className="mb-4 flex items-center gap-3"
+            className="mb-3 flex items-center gap-3"
           >
-            <div className="h-[1px] w-8 bg-primary" />
-            <span className="font-mono text-sm tracking-wider text-primary-light">
+            <div className="h-[1px] w-6 bg-primary sm:w-8" />
+            <span className="font-mono text-xs tracking-wider text-primary-light sm:text-sm">
               Hello, I&apos;m
             </span>
           </motion.div>
@@ -87,7 +87,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 2.1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-heading text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl xl:text-7xl"
+            className="font-heading text-3xl font-bold leading-tight sm:text-4xl lg:text-6xl xl:text-7xl"
           >
             <span className="bg-gradient-to-r from-white via-white to-slate-400 bg-clip-text text-transparent">
               {personalInfo.name}
@@ -99,7 +99,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 2.3, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-3 font-heading text-lg text-primary-light sm:text-xl lg:text-2xl xl:text-3xl"
+            className="mt-2 font-heading text-base text-primary-light sm:text-xl lg:text-2xl xl:text-3xl"
           >
             <TypingAnimation words={personalInfo.roles} />
           </motion.div>
@@ -109,7 +109,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 2.5 }}
-            className="mt-4 max-w-xl text-sm leading-relaxed text-muted sm:text-base lg:text-lg"
+            className="mt-3 max-w-xl text-xs leading-relaxed text-muted sm:text-sm lg:text-base"
           >
             {personalInfo.tagline}
           </motion.p>
@@ -119,29 +119,31 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 2.7 }}
-            className="mt-6 flex flex-wrap items-center gap-3"
+            className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
           >
             <MagneticButton
               href="#projects"
               variant="primary"
-              size="lg"
+              size="md"
               onClick={() =>
                 document
                   .getElementById('projects')
                   ?.scrollIntoView({ behavior: 'smooth' })
               }
+              className="w-full justify-center sm:w-auto"
             >
               View My Work
             </MagneticButton>
             <MagneticButton
               href="#contact"
               variant="secondary"
-              size="lg"
+              size="md"
               onClick={() =>
                 document
                   .getElementById('contact')
                   ?.scrollIntoView({ behavior: 'smooth' })
               }
+              className="w-full justify-center sm:w-auto"
             >
               Get in Touch
             </MagneticButton>
@@ -152,7 +154,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 3 }}
-            className="mt-8 flex items-center gap-4"
+            className="mt-6 flex items-center gap-3"
           >
             {[
               { icon: Github, href: personalInfo.github, label: 'GitHub' },
@@ -164,10 +166,10 @@ export default function Hero() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface/30 text-muted backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:text-primary-light hover:shadow-lg hover:shadow-primary/10"
+                className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface/30 text-muted backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:text-primary-light hover:shadow-lg hover:shadow-primary/10"
                 aria-label={social.label}
               >
-                <social.icon className="h-5 w-5" />
+                <social.icon className="h-4 w-4" />
               </a>
             ))}
           </motion.div>
@@ -179,7 +181,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 3.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}

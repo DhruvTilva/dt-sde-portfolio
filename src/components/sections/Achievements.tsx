@@ -28,11 +28,11 @@ export default function Achievements() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section id="achievements" className="relative py-16 lg:py-24">
+    <section id="achievements" className="relative w-full overflow-hidden py-16 lg:py-24">
       {/* Background decoration */}
       <div className="absolute right-1/4 bottom-1/4 h-[500px] w-[500px] rounded-full bg-secondary/3 blur-[150px]" />
 
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading title="Achievements" subtitle="// milestones" />
 
         <div ref={ref} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
