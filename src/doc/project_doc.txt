@@ -1,0 +1,239 @@
+================================================================
+  DHRUV TILVA — PORTFOLIO DOCUMENTATION
+  Quick reference: what to change and where
+================================================================
+
+
+----------------------------------------------------------------
+  SECTION 1 — HERO
+----------------------------------------------------------------
+  What you can change:
+    - Name, tagline, roles (typing animation)
+    - Email, GitHub, LinkedIn links
+    - Stats (years, projects, technologies, contributions)
+
+  File to edit:
+    src/data/personal.ts
+
+  Key fields:
+    name          → your full name
+    tagline       → one-line description below name
+    roles         → typing animation words (array of strings)
+    email         → your email address
+    github        → your GitHub profile URL
+    linkedin      → your LinkedIn profile URL
+    stats         → animated counter numbers
+
+
+----------------------------------------------------------------
+  SECTION 2 — ABOUT
+----------------------------------------------------------------
+  What you can change:
+    - About paragraphs
+    - Location
+    - Stats counters
+    - Resume download link
+
+  File to edit:
+    src/data/personal.ts
+
+  Key fields:
+    about[]       → each string = one paragraph
+    location      → city/country shown below form
+    resumeUrl     → path to your PDF resume
+    stats[]       → { label, value, suffix }
+
+
+----------------------------------------------------------------
+  SECTION 3 — SKILLS
+----------------------------------------------------------------
+  What you can change:
+    - Skill categories (Backend, Frontend, etc.)
+    - Individual skill names and proficiency levels (0-100)
+    - Skill icons (emoji)
+
+  File to edit:
+    src/data/skills.ts
+
+  Structure:
+    {
+      title: 'Category Name',
+      icon: 'Server',            → icon name (Server/Layout/Link/Cloud/Database/Brain)
+      skills: [
+        { name: 'Node.js', icon: '🟢', level: 90 }
+      ]
+    }
+
+
+----------------------------------------------------------------
+  SECTION 4 — TECH STACK (Marquee)
+----------------------------------------------------------------
+  What you can change:
+    - Technologies shown in the scrolling rows
+    - Category badge text
+    - Dot color
+
+  File to edit:
+    src/components/sections/TechStack.tsx  →  lines 7-30
+
+  Structure:
+    { name: 'Node.js', category: 'Backend', color: '#339933' }
+
+
+----------------------------------------------------------------
+  SECTION 5 — EXPERIENCE
+----------------------------------------------------------------
+  What you can change:
+    - Company name, job title, dates, location
+    - Bullet point descriptions
+    - Technology tags
+
+  File to edit:
+    src/data/experience.ts
+
+  Structure:
+    {
+      id:           'exp-1',
+      company:      'Company Name',
+      role:         'Job Title',
+      period:       '2023 - Present',
+      location:     'India / Remote',
+      description:  ['bullet 1', 'bullet 2'],
+      technologies: ['Node.js', 'AWS']
+    }
+
+
+----------------------------------------------------------------
+  SECTION 6 — PROJECTS
+----------------------------------------------------------------
+  What you can change:
+    - Project title, description, tech stack, links
+    - Category (controls filter buttons automatically)
+    - Featured badge
+
+  File to edit:
+    src/data/projects.ts
+
+  Structure:
+    {
+      id:              'proj-1',
+      title:           'Project Name',
+      description:     'Short description',
+      longDescription: 'Full description shown on card',
+      technologies:    ['PHP', 'MySQL'],
+      github:          'https://github.com/...',
+      live:            'https://yoursite.com',   (optional)
+      featured:        true,                     (shows Featured badge)
+      category:        'Full Stack'              (controls filter buttons)
+    }
+
+
+----------------------------------------------------------------
+  SECTION 7 — ACHIEVEMENTS
+----------------------------------------------------------------
+  What you can change:
+    - Title, description, metric badge
+    - Icon
+    - Optional link (shows "View" button on card)
+
+  File to edit:
+    src/data/achievements.ts
+
+  Structure:
+    {
+      id:          'ach-1',
+      title:       'Achievement Title',
+      description: 'What you achieved',
+      icon:        'Trophy',     → GitPullRequest / GitCommit / Rocket / Shield / Heart / Trophy
+      metric:      '2x Badge',   → small badge top-right of card
+      link:        'https://...' → optional, shows View button
+    }
+
+
+----------------------------------------------------------------
+  SECTION 8 — CONTACT
+----------------------------------------------------------------
+  What you can change:
+    - Heading text, paragraph text
+    - Contact method cards (Email, GitHub, LinkedIn, etc.)
+    - EmailJS keys for form to work
+
+  File to edit:
+    src/components/sections/Contact.tsx
+
+  EmailJS keys    → lines 13-15
+  Contact cards   → lines 18-29 (contactMethods array)
+  Heading text    → search "Let's Build Something"
+  Paragraph text  → search "Have an idea or project"
+
+  Form field variables sent to EmailJS:
+    name="name"        → {{name}} in template
+    name="from_email"  → {{from_email}} in template
+    name="message"     → {{message}} in template
+
+
+----------------------------------------------------------------
+  SECTION 9 — NAVBAR
+----------------------------------------------------------------
+  What you can change:
+    - Navigation links (labels and section targets)
+
+  File to edit:
+    src/components/layout/Navbar.tsx  →  lines 8-15
+
+  Structure:
+    { label: 'About', href: '#about' }
+
+
+----------------------------------------------------------------
+  SECTION 10 — FOOTER
+----------------------------------------------------------------
+  What you can change:
+    - Social icon links
+
+  File to edit:
+    src/components/layout/Footer.tsx
+
+  Social links are auto-pulled from:
+    src/data/personal.ts  →  github, linkedin, telegram, email
+
+
+----------------------------------------------------------------
+  GLOBAL THINGS
+----------------------------------------------------------------
+
+  Colors / Theme:
+    tailwind.config.ts  →  theme.extend.colors
+
+  Fonts:
+    src/app/layout.tsx  →  import lines at top
+
+  Global CSS / animations:
+    src/app/globals.css
+
+  SEO / Page title / Meta tags:
+    src/app/layout.tsx  →  metadata object
+
+  Resume PDF:
+    Place file at:  public/resume/Dhruv_Tilva_Resume.pdf
+
+  Profile photo:
+    Place file at:  public/images/avatar.jpg
+
+
+================================================================
+  QUICK CHEAT SHEET
+================================================================
+
+  Change typing animation words   →  src/data/personal.ts          (roles array)
+  Change about text               →  src/data/personal.ts          (about array)
+  Change stats numbers            →  src/data/personal.ts          (stats array)
+  Add/remove skill                →  src/data/skills.ts
+  Add/remove tech in marquee      →  src/components/sections/TechStack.tsx
+  Add/remove job experience       →  src/data/experience.ts
+  Add/remove project card         →  src/data/projects.ts
+  Add/remove achievement card     →  src/data/achievements.ts
+  Change contact info             →  src/data/personal.ts
+  Connect contact form email      →  src/components/sections/Contact.tsx  (lines 13-15)
+
+================================================================
