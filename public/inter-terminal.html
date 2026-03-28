@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DT's Terminal — Interview Preparation Guide</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0d1117; color: #e6edf3; line-height: 1.7; }
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .header { text-align: center; padding: 40px 0 36px; border-bottom: 1px solid #21262d; margin-bottom: 44px; }
+    .header h1 { font-size: 22px; font-weight: 700; color: #58a6ff; margin-bottom: 6px; }
+    .header p { color: #8b949e; font-size: 14px; }
+
+    .toc { background: #161b22; border: 1px solid #21262d; border-radius: 10px; padding: 18px 22px; margin-bottom: 44px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .toc span { font-size: 12px; color: #8b949e; margin-right: 4px; }
+    .toc a { color: #58a6ff; font-size: 13px; text-decoration: none; background: #1f2d3d; padding: 4px 12px; border-radius: 20px; }
+    .toc a:hover { background: #2d3f55; }
+
+    .section { margin-bottom: 56px; }
+    .section-title { font-size: 17px; font-weight: 700; color: #f0f6fc; margin-bottom: 4px; padding-bottom: 10px; border-bottom: 1px solid #21262d; }
+    .section-sub { font-size: 12px; color: #8b949e; margin-bottom: 20px; margin-top: 4px; }
+
+    h3 { font-size: 14px; font-weight: 700; color: #79c0ff; margin: 24px 0 10px; }
+
+    p { font-size: 14px; color: #c9d1d9; margin-bottom: 12px; }
+    ul, ol { padding-left: 20px; margin-bottom: 12px; }
+    li { font-size: 14px; color: #c9d1d9; margin-bottom: 5px; }
+    li strong, p strong { color: #e6edf3; }
+
+    .card { background: #161b22; border: 1px solid #21262d; border-radius: 8px; padding: 18px 20px; margin-bottom: 16px; }
+    .card-label { font-size: 11px; font-weight: 600; color: #58a6ff; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 10px; }
+
+    .qa-block { margin-bottom: 24px; }
+    .qa-q { background: #1c2128; border-left: 3px solid #58a6ff; padding: 12px 16px; border-radius: 0 6px 6px 0; font-size: 14px; font-weight: 600; color: #e6edf3; margin-bottom: 8px; }
+    .qa-a { background: #161b22; border: 1px solid #21262d; border-radius: 6px; padding: 14px 16px; font-size: 14px; color: #c9d1d9; line-height: 1.75; }
+
+    pre { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px 18px; font-size: 12.5px; line-height: 1.7; color: #e6edf3; overflow-x: auto; white-space: pre; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; margin-bottom: 16px; }
+    code { background: #21262d; padding: 2px 6px; border-radius: 4px; font-size: 12.5px; color: #79c0ff; font-family: 'SFMono-Regular', Consolas, monospace; }
+
+    .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; margin-right: 6px; margin-bottom: 4px; }
+    .badge-blue { background: #1f2d3d; color: #58a6ff; }
+    .badge-green { background: #1a2d1e; color: #3fb950; }
+    .badge-yellow { background: #2d2a1e; color: #d29922; }
+
+    .strategy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+    @media (max-width: 600px) { .strategy-grid { grid-template-columns: 1fr; } }
+    .strategy-card { background: #161b22; border: 1px solid #21262d; border-radius: 8px; padding: 14px 16px; }
+    .strategy-card h4 { font-size: 13px; font-weight: 700; color: #79c0ff; margin-bottom: 6px; }
+    .strategy-card p { font-size: 12.5px; color: #8b949e; margin-bottom: 6px; }
+    .strategy-card .best-for { font-size: 11.5px; color: #3fb950; }
+
+    hr { border: none; border-top: 1px solid #21262d; margin: 32px 0; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>DT's Terminal — Interview Preparation Guide</h1>
+    <p>Simple, clear answers to explain this project in any interview.</p>
+  </div>
+
+  <div class="toc">
+    <span>Jump to →</span>
+    <a href="#overview">Overview</a>
+    <a href="#features">Features</a>
+    <a href="#trade-finder">Trade Finder</a>
+    <a href="#ml">AI / ML</a>
+    <a href="#data">Data Calc</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#auth">Auth</a>
+    <a href="#admin">Admin</a>
+    <a href="#visitor">Visitors</a>
+    <a href="#perf">Performance</a>
+    <a href="#challenges">Challenges</a>
+    <a href="#future">Future</a>
+    <a href="#qa">Q&amp;A</a>
+  </div>
+
+
+  <!-- 1. Overview -->
+  <div class="section" id="overview">
+    <div class="section-title">1. Project Overview</div>
+    <div class="section-sub">What it is, why it was built, what problem it solves.</div>
+
+    <div class="card">
+      <div class="card-label">What is it?</div>
+      <p>DT's Terminal is a real-time Indian stock market intelligence platform — like a mini Bloomberg terminal for retail traders. It shows live NIFTY/BSE prices, smart news, and auto-detected trade signals in one clean dashboard.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Why was it built?</div>
+      <p>Most retail traders switch between 4–5 different apps (trading app, news sites, screener, etc.) to make a decision. This project brings everything into one place — live prices, relevant news, and trade signals — all updating automatically.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-label">What problem does it solve?</div>
+      <ul>
+        <li>Saves time by combining data sources in one view</li>
+        <li>Highlights important signals automatically (no manual scanning)</li>
+        <li>Works without login — anyone can use the dashboard instantly</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- 2. Key Features -->
+  <div class="section" id="features">
+    <div class="section-title">2. Key Features</div>
+    <div class="section-sub">Everything the platform does at a glance.</div>
+
+    <ul>
+      <li><strong>Live stock data</strong> — NIFTY 50 stocks + indices (NIFTY, SENSEX, BANK NIFTY) refresh every 60 seconds</li>
+      <li><strong>Smart news feed</strong> — Pulls from Moneycontrol, Economic Times, LiveMint, NDTV Profit. Scores news by importance and freshness</li>
+      <li><strong>Trade signals</strong> — Auto-detects breakouts, volume spikes, gap ups/downs, news-triggered moves</li>
+      <li><strong>Trade Finder</strong> — 5 filter strategies to find stocks matching specific patterns</li>
+      <li><strong>ML Trend Prediction (AI)</strong> — Nightly machine learning model predicts next-day direction (bullish/bearish) for each signal stock. Shown as an AI badge in Trade Finder</li>
+      <li><strong>ML Accuracy Tracker</strong> — Automatically grades yesterday's AI predictions against actual market results. Shows 7-day rolling accuracy with a dedicated page</li>
+      <li><strong>Watchlist &amp; Bookmarks</strong> — Saved per user, synced to database</li>
+      <li><strong>Admin Panel</strong> — Manage users, see visitor analytics, block/unblock accounts</li>
+      <li><strong>Guest Mode</strong> — Dashboard fully works without any login</li>
+    </ul>
+  </div>
+
+
+  <!-- 3. Trade Finder -->
+  <div class="section" id="trade-finder">
+    <div class="section-title">3. How Trade Finder Works</div>
+    <div class="section-sub">5 filters, each targeting a different type of opportunity.</div>
+
+    <div class="strategy-grid">
+      <div class="strategy-card">
+        <h4>Strict Morning Trend</h4>
+        <p>Looks at the <strong>first hour of trading</strong> (9:30–10:30 AM). Requires <strong>all candles to move in one direction for 3 days in a row</strong>. Most reliable signal — very strict conditions.</p>
+        <div class="best-for">Best for: High-confidence, low-risk signals</div>
+      </div>
+      <div class="strategy-card">
+        <h4>General Morning Trend</h4>
+        <p>Also checks morning (9:30–10:30 AM) vs afternoon (10:30–3:30 PM). Direction must <strong>match on all 3 of the last 3 days</strong>. Less strict but still consistent.</p>
+        <div class="best-for">Best for: Traders okay with slightly softer signals</div>
+      </div>
+      <div class="strategy-card">
+        <h4>Candle Signal</h4>
+        <p>Looks for specific candlestick patterns (bullish engulfing, hammer, etc.). Pattern-based signal — good for short-term traders.</p>
+        <div class="best-for">Best for: Technical traders following candlestick analysis</div>
+      </div>
+      <div class="strategy-card">
+        <h4>Long Trend</h4>
+        <p>Checks if a stock has been trending in one direction for multiple days. Looks at overall multi-day movement, not just morning.</p>
+        <div class="best-for">Best for: Swing traders holding 2–5 days</div>
+      </div>
+    </div>
+    <div class="strategy-card" style="margin-bottom:16px;">
+      <h4>High Volatility</h4>
+      <p>Finds stocks moving significantly more than usual (based on % change). Good for momentum plays.</p>
+      <div class="best-for">Best for: Aggressive traders who want big moves</div>
+    </div>
+  </div>
+
+
+  <!-- 4. AI / ML -->
+  <div class="section" id="ml">
+    <div class="section-title">4. AI / ML Features</div>
+
+    <h3>ML Trend Prediction (Nightly)</h3>
+    <p>Every night after market close, a Python script trains a Logistic Regression model on the last 30 days of trade signal data and predicts whether each stock in today's scan will move up (bullish) or down (bearish) the next day.</p>
+
+    <p><strong>Where it shows:</strong> In Trade Finder, as an <code>AI</code> column — e.g. <code>↑ 74%</code> (bullish, 74% confidence) or <code>↓ 68%</code> (bearish).</p>
+
+    <div class="card">
+      <div class="card-label">How it works — step by step</div>
+      <ol>
+        <li>GitHub Actions triggers the Python script every weeknight at 8 PM IST</li>
+        <li>Script fetches last 30 days of data from <code>trade_finder_results</code> table</li>
+        <li>Features used: <code>score</code>, <code>change_percent</code>, <code>direction</code> (encoded), <code>strategy_type</code> (weighted)</li>
+        <li>Label = did the stock go up the next day? (1 = yes, 0 = no)</li>
+        <li>Trains <code>LogisticRegression</code> using <code>StandardScaler</code> + <code>cross_val_score</code> for accuracy</li>
+        <li>Predicts today's signals and saves to <code>ml_predictions</code> table (upsert, so no duplicates)</li>
+        <li>Next.js API route <code>/api/ml-predictions</code> returns predictions as a symbol→prediction map</li>
+        <li>Trade Finder fetches this silently on page load — if table not ready, shows no badges (no errors)</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Why Logistic Regression (not a neural network)?</div>
+      <ul>
+        <li>Limited data: 30 days × ~400 signals = ~12,000 rows max</li>
+        <li>Works well on small, structured data</li>
+        <li>Interpretable — you can explain <em>why</em> it predicts what it does</li>
+        <li>Fast to train in GitHub Actions (no GPU needed)</li>
+        <li>Deep learning requires massive datasets — overkill here</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Key design decisions</div>
+      <ul>
+        <li><code>LOOKBACK_DAYS = 30</code> — enough signal history, not so much that old patterns hurt</li>
+        <li><code>MIN_TRAINING_ROWS = 20</code> — if not enough data, script skips gracefully (green CI)</li>
+        <li>Deduplication — a stock may appear in multiple strategies; take highest-score row only</li>
+        <li>Silent fail — if <code>ml_predictions</code> table doesn't exist, UI shows no badges, no crash</li>
+      </ul>
+    </div>
+
+    <hr/>
+
+    <h3>ML Accuracy Tracker (Auto-grading)</h3>
+    <p>Every night, before training the new model, the script checks yesterday's predictions against what actually happened (today's real scan data) and grades each prediction.</p>
+
+    <div class="card">
+      <div class="card-label">How grading works</div>
+      <p>Yesterday predicted: RELIANCE → bullish<br/>
+      Today's scan shows: RELIANCE change_percent = +1.2% → actual direction = bullish<br/>
+      Result: <code>was_correct = true</code></p>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Where it shows</div>
+      <ul>
+        <li>A <code>◎ AI Accuracy</code> button in the Trade Finder info bar → opens <code>/trade-finder/ml-accuracy</code></li>
+        <li>That page shows: 7-day rolling accuracy stat card + per-day table with color bars</li>
+        <li>Color coding: <span class="badge badge-green">≥65% green (strong)</span> <span class="badge badge-yellow">55–64% amber</span> <span style="display:inline-block;padding:2px 10px;border-radius:20px;font-size:11px;font-weight:600;background:#2d1a1a;color:#f85149;">&lt;55% red (weak)</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-label">DB columns added to ml_predictions</div>
+      <ul>
+        <li><code>was_correct</code> (boolean, nullable — null = not yet graded)</li>
+        <li><code>actual_direction</code> (text — what actually happened)</li>
+      </ul>
+      <p style="margin-top:10px;margin-bottom:0;">A <code>ml_daily_accuracy</code> view in Supabase aggregates rows per day: total predicted, correct count, accuracy %.</p>
+    </div>
+  </div>
+
+
+  <!-- 5. Data Calculation -->
+  <div class="section" id="data">
+    <div class="section-title">5. How Data is Calculated</div>
+
+    <div class="card">
+      <div class="card-label">Score</div>
+      <p>Every trade signal gets a score based on how strong the signal is. Higher score = stronger signal.</p>
+      <p style="margin-bottom:0;"><span class="badge badge-blue">Strict Morning = 90</span> <span class="badge badge-blue">General Morning = 85</span> — Scores help sort and prioritize opportunities.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Change %</div>
+      <p style="margin-bottom:0;">Simple formula: <code>((current price - previous close) / previous close) × 100</code><br/>
+      Shown with green (positive) or red (negative) color. Pulled directly from Yahoo Finance API.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Direction (Bull/Bear)</div>
+      <p style="margin-bottom:0;">Based on whether Change % is positive (Bullish) or negative (Bearish). News is also tagged Bullish/Bearish based on keyword matching (e.g., "surge", "profit" = bullish; "fall", "loss" = bearish).</p>
+    </div>
+  </div>
+
+
+  <!-- 6. Architecture -->
+  <div class="section" id="architecture">
+    <div class="section-title">6. Architecture</div>
+
+    <div class="card">
+      <div class="card-label">Frontend (UI)</div>
+      <ul>
+        <li>Built with <strong>Next.js + TypeScript</strong></li>
+        <li>3-column layout: Watchlist (left) | News + Stocks (center) | Details (right)</li>
+        <li>All state managed with <strong>Zustand</strong> (a simple global store)</li>
+        <li>Refreshes data every <strong>60 seconds</strong> automatically</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Backend (API Logic)</div>
+      <ul>
+        <li>Next.js API routes handle all data fetching</li>
+        <li>Stocks: fetched from <strong>Yahoo Finance</strong> (server-side, no CORS issues)</li>
+        <li>News: fetched from <strong>6 RSS feeds</strong>, scored and sorted</li>
+        <li>Trade signals: calculated in <code>lib/intelligence.ts</code> and <code>lib/trade-strategies.ts</code></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Database (Storage)</div>
+      <ul>
+        <li><strong>Supabase</strong> (PostgreSQL) stores users, watchlist, bookmarks, visitor logs</li>
+        <li>Row-level security ensures users can only see their own data</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-label">How Data Flows</div>
+<pre>User opens dashboard
+  → useMarketData hook fires
+  → Calls /api/stocks (Yahoo Finance) + /api/news (RSS feeds) in parallel
+  → Processes trade signals on server
+  → Updates global Zustand store
+  → UI re-renders with fresh data
+  → Repeats every 60 seconds</pre>
+    </div>
+  </div>
+
+
+  <!-- 7. Auth -->
+  <div class="section" id="auth">
+    <div class="section-title">7. Authentication System</div>
+
+    <ul>
+      <li><strong>Signup</strong>: User enters name + email + password → Supabase sends confirmation email</li>
+      <li><strong>Email verification</strong>: User clicks link → goes to <code>/auth/success</code> page</li>
+      <li><strong>Login</strong>: Email + password → Supabase session created → redirected to dashboard</li>
+      <li><strong>Forgot Password</strong>: Enter email → get reset link → click → set new password</li>
+      <li><strong>Google OAuth</strong>: One-click login with Google account</li>
+      <li><strong>Guest Mode</strong>: Skip login entirely — dashboard works without account</li>
+      <li><strong>Session handling</strong>: Supabase manages JWT tokens, auto-refreshed via Next.js middleware</li>
+      <li><strong>Blocked users</strong>: If admin blocks a user, they get signed out immediately on next login</li>
+    </ul>
+  </div>
+
+
+  <!-- 8. Admin -->
+  <div class="section" id="admin">
+    <div class="section-title">8. Admin Panel</div>
+
+    <p>Needed to manage who's using the app, manage user accounts, and keep the database clean.</p>
+
+    <div class="card">
+      <div class="card-label">What admin can do</div>
+      <ul>
+        <li><strong>View all users</strong> — name, email, role, when they joined</li>
+        <li><strong>Make someone admin</strong> — toggle admin status with one click</li>
+        <li><strong>Block a user</strong> — prevents them from logging in</li>
+        <li><strong>Visitor Analytics</strong> — Total Visitors, Today's visitors, Active Now (last 5 min)</li>
+        <li><strong>Database cleanup</strong> — delete old trade data and visitor logs via GitHub Actions</li>
+      </ul>
+    </div>
+    <p>Only users with <code>is_admin = true</code> in the database can access the admin panel. Everyone else gets redirected.</p>
+  </div>
+
+
+  <!-- 9. Visitor Tracking -->
+  <div class="section" id="visitor">
+    <div class="section-title">9. Visitor Tracking Logic</div>
+
+    <div class="card">
+      <div class="card-label">How it works</div>
+      <p>When anyone opens the app, a silent component (<code>VisitorTracker</code>) runs in the background. It creates a unique session ID and saves it to <strong>localStorage</strong>. This session ID is sent to the database to record the visit.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Why session-based (not IP-based)?</div>
+      <p style="margin-bottom:0;">IP tracking is unreliable (shared networks, VPNs). Session ID is unique per browser — more accurate for unique visitors.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-label">How duplicates are avoided</div>
+      <p>The dashboard auto-refreshes every 60 seconds. Without protection, every refresh would count as a new visit.</p>
+      <p style="margin-bottom:0;"><strong>Solution:</strong> a <strong>5-minute debounce</strong> — if the user already tracked within 5 minutes, skip the API call. A user who stays on the page for an hour counts as just ~12 heartbeats, not 60 fake "visits".</p>
+    </div>
+  </div>
+
+
+  <!-- 10. Performance -->
+  <div class="section" id="perf">
+    <div class="section-title">10. Performance &amp; Optimization</div>
+
+    <ul>
+      <li><strong>60-second refresh</strong> — balances freshness vs API rate limits (Yahoo Finance can throttle)</li>
+      <li><strong>Server-side fetching</strong> — all stock/news data fetched on server, never from browser directly (avoids CORS)</li>
+      <li><strong>Parallel data fetching</strong> — stocks + news fetched at the same time using <code>Promise.allSettled</code></li>
+      <li><strong>No unnecessary DB calls</strong> — visitor tracking has a 5-min debounce to reduce write volume</li>
+      <li><strong>Cleanup jobs</strong> — old trade data (10 days) and visitor logs (30 days) deleted via GitHub Actions to keep DB under 500 MB free limit</li>
+      <li><strong>New item detection</strong> — after each refresh, only truly new news items get the "NEW" badge (compared against previous IDs)</li>
+    </ul>
+  </div>
+
+
+  <!-- 11. Challenges -->
+  <div class="section" id="challenges">
+    <div class="section-title">11. Challenges Faced</div>
+
+    <ul>
+      <li><strong>Real-time data without WebSockets</strong> — solved by polling every 60s with a countdown timer so users know when next refresh happens</li>
+      <li><strong>Duplicate visitor counting</strong> — 60s auto-refresh would flood the DB; solved with localStorage debounce (5-min minimum between writes)</li>
+      <li><strong>Layout not scrolling properly</strong> — 3-column fixed-height layout required a strict height chain (<code>html → body → page → panels</code>) to prevent overflow</li>
+      <li><strong>Database storage growth</strong> — <code>trade_finder_results</code> grew 2.7 MB/day; solved by building a manual cleanup job to keep only last 10 days</li>
+      <li><strong>GitHub Actions calling admin API</strong> — browser session not available in CI; solved with a shared secret (<code>x-cleanup-secret</code> header) as an alternative auth method</li>
+      <li><strong>Yahoo Finance unofficial API</strong> — can break anytime; fetched server-side so if it fails, only the server sees the error (gracefully handled)</li>
+    </ul>
+  </div>
+
+
+  <!-- 12. Future -->
+  <div class="section" id="future">
+    <div class="section-title">12. Future Improvements</div>
+
+    <ul>
+      <li><strong>AI stock explanation</strong> — "Why is RELIANCE up today?" answered by AI using latest news</li>
+      <li><strong>Price alerts</strong> — notify users when a stock hits a target price</li>
+      <li><strong>Better analytics dashboard</strong> — charts for visitor growth, most-viewed stocks, etc.</li>
+      <li><strong>Mobile app</strong> — current app is responsive but a dedicated mobile app would improve UX</li>
+      <li><strong>More trade strategies</strong> — RSI-based, moving average crossover, etc.</li>
+      <li><strong>Official stock data API</strong> — switch from Yahoo Finance to Zerodha/Upstox for more reliability</li>
+    </ul>
+  </div>
+
+
+  <!-- 13. Q&A -->
+  <div class="section" id="qa">
+    <div class="section-title">13. Common Interview Q&amp;A</div>
+
+    <div class="qa-block">
+      <div class="qa-q">Q: Why did you build this project?</div>
+      <div class="qa-a">I wanted a single place to track Indian stocks, news, and signals without jumping between apps. Most free tools are either too basic or too complex. I built something in the middle — clean, fast, and actually useful for retail traders.</div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-q">Q: How does your Trade Finder filter system work?</div>
+      <div class="qa-a">Each filter looks for a different pattern. For example, Strict Morning Trend checks if the first hour of trading moved in one direction for 3 consecutive days — that's a strong signal. Other filters are less strict or look at different timeframes. Traders can pick the filter that matches their style.</div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-q">Q: How do you ensure data accuracy?</div>
+      <div class="qa-a">Stock data comes from Yahoo Finance which pulls from NSE/BSE. News is fetched from trusted Indian financial news RSS feeds. For signals, I use thresholds (e.g., volume must be 2× average) to avoid false positives. All data is refreshed every 60 seconds.</div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-q">Q: How is your app different from NSE/BSE screeners?</div>
+      <div class="qa-a">Most screeners show numbers but don't explain what's happening. My app combines news + price data + signals in one view. If a stock is moving AND there's news about it, you see both at once. Also it works without login — no sign-up friction.</div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-q">Q: How do you handle scaling?</div>
+      <div class="qa-a">The current free stack (Vercel + Supabase) handles well up to ~1,000 users. I've built cleanup jobs to keep DB size under control. If traffic grows, the plan is: upgrade to Supabase Pro ($25/mo) to stop DB pausing, and Vercel Pro ($20/mo) if bandwidth hits 80 GB. Total max cost: $45/month for most scenarios.</div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-q">Q: How do you track visitors without invading privacy?</div>
+      <div class="qa-a">I use a random session ID stored in the user's browser (localStorage). No name, no IP, no personal data is stored — just an anonymous UUID tied to a browser session. Users can clear it anytime by clearing browser storage.</div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-q">Q: How does your ML prediction feature work?</div>
+      <div class="qa-a">Every night after market close, a Python script runs via GitHub Actions. It fetches the last 30 days of trade signal data from the database, engineers 4 features (score, change %, direction, strategy type), trains a Logistic Regression model, and predicts whether each of today's signal stocks will move up or down the next day. Predictions are saved to the database and shown as an AI badge (e.g. <code>↑ 74%</code>) in the Trade Finder.</div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-q">Q: Why Logistic Regression and not a neural network?</div>
+      <div class="qa-a">Three reasons — data size, speed, and interpretability. I have at most ~12,000 rows (30 days × ~400 signals). Deep learning needs massive datasets to generalize; Logistic Regression works well on small, structured tabular data. It also trains in seconds inside GitHub Actions (no GPU), and you can explain why it predicts what it does. Neural networks would be overkill and likely overfit here.</div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-q">Q: How do you validate your AI predictions?</div>
+      <div class="qa-a">I built an auto-grading system. Every night, before training the new model, the script checks yesterday's predictions against today's actual scan data. For each predicted stock, it compares the predicted direction (bullish/bearish) against whether the actual change % was positive or negative. The result is stored as <code>was_correct = true/false</code> in the database. A PostgreSQL view aggregates this into a per-day accuracy table shown on the <code>/trade-finder/ml-accuracy</code> page with a 7-day rolling accuracy stat.</div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-q">Q: What accuracy does your ML model achieve?</div>
+      <div class="qa-a">The cross-validation accuracy on the training set is printed in the GitHub Actions log each night. For market prediction, anything above 55% is meaningful (random would be 50%). The accuracy tracker page shows color-coded thresholds: ≥65% = strong (green), 55–64% = moderate (amber), &lt;55% = weak (red). The honest answer is: the model is a supplementary signal, not a guarantee — users see the accuracy history and can judge trust themselves.</div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-q">Q: What tech stack did you use and why?</div>
+      <div class="qa-a">Next.js for the full-stack framework (frontend + API routes in one project), TypeScript for type safety, Supabase for auth + database (easy to set up, free tier), Zustand for state management (simpler than Redux), and Tailwind CSS for styling. This stack is fast to build with, easy to deploy on Vercel, and scales well for a solo project.</div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-q">Q: How do you handle authentication security?</div>
+      <div class="qa-a">Supabase handles all auth (JWT tokens, email verification, OAuth). On my side: blocked users get kicked out on next login, admin routes verify <code>is_admin</code> from database on every request, and the service role key (which bypasses security rules) is only used server-side and never exposed to the browser.</div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <div style="text-align:center; padding:28px 0; border-top:1px solid #21262d; color:#484f58; font-size:12px; margin-top:20px;">
+    DT's Terminal — Interview Guide · Last updated: March 2026
+  </div>
+
+</div>
+</body>
+</html>
