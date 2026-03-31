@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DT's Terminal — Feature Reference</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; line-height: 1.6; padding: 32px 20px; }
+    .wrap { max-width: 860px; margin: 0 auto; }
+
+    h1 { font-size: 22px; font-weight: 700; color: #f0f6fc; margin-bottom: 4px; }
+    .subtitle { color: #8b949e; font-size: 13px; margin-bottom: 36px; }
+
+    .section { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 24px 28px; margin-bottom: 20px; }
+    .section-title { font-size: 15px; font-weight: 700; color: #f0f6fc; margin-bottom: 4px; display: flex; align-items: center; gap: 10px; }
+    .badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 20px; }
+    .badge-blue { background: #1f3a5f; color: #58a6ff; }
+    .badge-green { background: #1a3a2a; color: #3fb950; }
+    .badge-orange { background: #3a2a10; color: #e3b341; }
+    .badge-purple { background: #2d1f4a; color: #bc8cff; }
+    .section-sub { color: #8b949e; font-size: 12px; margin-bottom: 16px; }
+
+    ul { padding-left: 18px; }
+    ul li { color: #c9d1d9; margin-bottom: 5px; font-size: 13px; }
+    ul li strong { color: #f0f6fc; }
+
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+    @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+
+    .card { background: #0d1117; border: 1px solid #21262d; border-radius: 8px; padding: 14px 16px; }
+    .card-title { font-size: 12px; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 8px; }
+    .card ul { padding-left: 14px; }
+    .card ul li { font-size: 12px; margin-bottom: 3px; }
+
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 12px; }
+    th { text-align: left; color: #8b949e; font-weight: 600; padding: 6px 10px; border-bottom: 1px solid #21262d; text-transform: uppercase; font-size: 11px; letter-spacing: 0.4px; }
+    td { padding: 7px 10px; border-bottom: 1px solid #161b22; color: #c9d1d9; }
+    tr:last-child td { border-bottom: none; }
+    td:first-child { color: #58a6ff; font-family: monospace; font-size: 12px; }
+
+    .tag { display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 4px; font-weight: 600; margin-left: 4px; }
+    .tag-bull { background: #1a3a2a; color: #3fb950; }
+    .tag-bear { background: #3a1a1a; color: #f85149; }
+    .tag-neu { background: #1f2937; color: #8b949e; }
+
+    hr { border: none; border-top: 1px solid #21262d; margin: 16px 0; }
+    .score { color: #e3b341; font-weight: 700; }
+    .note { background: #1c2128; border-left: 3px solid #30363d; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 12px; font-size: 12px; color: #8b949e; }
+
+    /* Example flow styles */
+    .example-box { background: #0d1117; border: 1px solid #21262d; border-radius: 8px; padding: 16px 18px; margin-top: 12px; }
+    .example-step { display: flex; gap: 12px; margin-bottom: 10px; align-items: flex-start; }
+    .step-num { background: #1f3a5f; color: #58a6ff; font-size: 11px; font-weight: 700; border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .step-content { font-size: 12px; color: #c9d1d9; line-height: 1.7; }
+    .step-content strong { color: #f0f6fc; }
+    .step-content code { background: #161b22; border: 1px solid #30363d; border-radius: 3px; padding: 1px 5px; font-size: 11px; color: #e3b341; }
+    .final-score-box { background: #1a3a2a; border: 1px solid #2d6a4a; border-radius: 6px; padding: 10px 14px; margin-top: 8px; font-size: 12px; color: #3fb950; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>🔒 DT's Terminal — Feature Reference</h1>
+  <p class="subtitle">End-to-end overview · Built for NSE/BSE Indian markets · Interview-ready notes</p>
+
+  <!-- ── TECH STACK ── -->
+  <div class="section">
+    <div class="section-title">⚙️ Tech Stack at a Glance</div>
+    <div class="section-sub">What powers the entire platform</div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">Frontend & Framework</div>
+        <ul>
+          <li><strong>Next.js 15</strong> — App Router, SSR + CSR</li>
+          <li><strong>TypeScript</strong> — full type safety</li>
+          <li><strong>Tailwind CSS</strong> — utility-first styling</li>
+          <li>Deployed on <strong>Vercel</strong></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Backend & Data</div>
+        <ul>
+          <li><strong>Supabase</strong> — Postgres DB + Auth + RLS</li>
+          <li><strong>Yahoo Finance API</strong> — real-time quotes & candles</li>
+          <li><strong>Google News RSS</strong> — news aggregation</li>
+          <li><strong>Brevo (SMTP)</strong> — transactional email</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Automation</div>
+        <ul>
+          <li><strong>GitHub Actions</strong> — daily market scan cron</li>
+          <li>Runs at <strong>4:30 PM IST</strong>, Mon–Fri (post-market)</li>
+          <li>Holiday detection + idempotency built-in</li>
+          <li><strong>ML model</strong> retrains nightly at 8 PM IST</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">ML & Python Stack</div>
+        <ul>
+          <li><strong>scikit-learn</strong> — LogisticRegression model</li>
+          <li><strong>pandas + numpy</strong> — data manipulation</li>
+          <li><strong>supabase-py</strong> — DB read/write from Python</li>
+          <li>Runs via GitHub Actions (ubuntu-latest)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── LIVE DASHBOARD ── -->
+  <div class="section">
+    <div class="section-title">📊 Live Dashboard <span class="badge badge-green">Real-Time</span></div>
+    <div class="section-sub">Central hub — auto-refreshes every 60 seconds</div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">Market Indices</div>
+        <ul>
+          <li>NIFTY 50 <code>(^NSEI)</code></li>
+          <li>SENSEX <code>(^BSESN)</code></li>
+          <li>BANK NIFTY <code>(^NSEBANK)</code></li>
+          <li>Shows price, change %, last updated</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Stocks Panel</div>
+        <ul>
+          <li>Top 15–30 NIFTY 50 stocks</li>
+          <li>Price, daily change, volume</li>
+          <li>52-week high/low, avg volume</li>
+          <li>Data via Yahoo Finance API</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">AI Market Pulse</div>
+        <ul>
+          <li>Overall market mood: Bullish / Bearish / Neutral</li>
+          <li>Derived from news sentiment scores</li>
+          <li>Updates with every news refresh</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Opportunities Panel</div>
+        <ul>
+          <li><strong>Volume Spike</strong> — volume > 2× avg</li>
+          <li><strong>Gap Up/Down</strong> — >2% from prev close</li>
+          <li><strong>Breakout</strong> — >3% gain near day high</li>
+          <li><strong>News-Driven</strong> — high-impact news + price move</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">
+      <strong>How real-time works:</strong> Client fetches <code>/api/stocks</code> on load, then polls every 60s. Yahoo Finance returns latest quote (15-min delayed for free tier). A countdown timer shows next refresh. 8s timeout on each request — fails gracefully, shows last known data.
+    </div>
+  </div>
+
+  <!-- ── SMART NEWS ENGINE ── -->
+  <div class="section">
+    <div class="section-title">📰 Smart News Engine <span class="badge badge-blue">AI Filtered</span></div>
+    <div class="section-sub">Fetches 100+ articles → filters down to 80 relevant, ranked by impact + freshness</div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">How We Fetch News (2 Sources)</div>
+        <ul>
+          <li><strong>Google News RSS</strong> — 6 search-based feeds</li>
+          <li><strong>Economic Times RSS</strong> — 2 direct feeds (markets + stocks)</li>
+          <li>Each feed returns up to 20 items → parsed with custom XML regex parser</li>
+          <li>All 8 feeds fetched in <strong>parallel</strong> (Promise.allSettled)</li>
+          <li>60s server-side cache (Next.js revalidate)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Why Google News = All Sources</div>
+        <ul>
+          <li>Google News is an <strong>aggregator</strong> — it pulls from all Indian publishers</li>
+          <li>Each article has a <code>&lt;source&gt;</code> tag with original publisher name</li>
+          <li>We extract it → UI shows "Moneycontrol", "CNBC TV18", "LiveMint", "Business Standard", "ET" etc.</li>
+          <li>So we get <strong>all major sources in one RSS call</strong> — no per-source API needed</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">6 Google News Search Feeds</div>
+        <ul>
+          <li><code>NSE BSE stock market india</code></li>
+          <li><code>nifty sensex today</code></li>
+          <li><code>india stock earnings results quarterly</code></li>
+          <li><code>RBI SEBI india economy policy</code></li>
+          <li><code>india IPO bulk deal block deal buyback</code></li>
+          <li><code>india merger acquisition order win contract</code></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Relevance Scoring</div>
+        <ul>
+          <li><strong>22 high-impact patterns</strong> with weights (7–10)</li>
+          <li>Bulk/block deals, insider buying → weight 10</li>
+          <li>Quarterly results, beat/miss estimates → weight 9–10</li>
+          <li>RBI rate decisions, SEBI orders → weight 9–10</li>
+          <li>Order wins, M&A, fundraising → weight 8–9</li>
+          <li>Noise filter — "stocks to watch", "how to invest" → downranked −5</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Freshness Decay</div>
+        <ul>
+          <li>&lt;1h old → +10 pts</li>
+          <li>1–2h → +8 pts</li>
+          <li>2–4h → +6 pts</li>
+          <li>4–8h → +4 pts</li>
+          <li>8–24h → +2 pts</li>
+          <li>&gt;24h → <strong>dropped entirely</strong></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Sentiment Analysis</div>
+        <ul>
+          <li>Each article tagged: <span class="tag tag-bull">Bullish</span> <span class="tag tag-bear">Bearish</span> <span class="tag tag-neu">Neutral</span></li>
+          <li>Scans headline + description for keyword frequency</li>
+          <li><strong>Bullish words (14):</strong> surge, rally, gain, jump, soar, beat, upgrade, wins, approved, bags…</li>
+          <li><strong>Bearish words (16):</strong> fall, crash, plunge, miss, downgrade, penalty, ban, probe, default…</li>
+          <li>bull_count > bear_count → Bullish (and vice versa)</li>
+          <li>Feeds into <strong>AI Market Pulse</strong> on dashboard</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:12px;">
+      <div class="card">
+        <div class="card-title">🚫 Noise Filter — What Gets Downranked (−5 pts)</div>
+        <ul>
+          <li>"expert says", "analyst says", "market expert"</li>
+          <li>"stocks to watch", "top picks", "best stocks"</li>
+          <li>"5 things to know", "10 things", "things to know"</li>
+          <li>"how to invest", "how to trade", "investment tips"</li>
+          <li>"here's why" clickbait articles</li>
+        </ul>
+        <p style="color:#8b949e;font-size:12px;margin-top:8px;">These articles are opinion/listicle type — not actual market-moving news. They appear at the bottom of the feed.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">✅ Final Ranking Formula</div>
+        <p style="color:#c9d1d9;font-size:12px;line-height:1.9;">
+          <strong>Total Score = Impact Score + Freshness Score + Stock Match Bonus</strong><br>
+          Impact Score: sum of matched keyword weights (7–10 each)<br>
+          Freshness: 0–10 pts based on article age<br>
+          Stock Match: +2 pts if article mentions a tracked NSE stock<br>
+          Noise penalty: −5 pts<br><br>
+          Sorted: non-noise first, then by score. Deduplication by first 60 chars of title. Top 80 returned.
+        </p>
+      </div>
+    </div>
+
+    <!-- END-TO-END EXAMPLE -->
+    <div style="margin-top:16px;">
+      <p style="color:#8b949e;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:10px;">📌 End-to-End Example — "HDFC Bank Bulk Deal"</p>
+      <div class="example-box">
+
+        <div class="example-step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>Article appears in Google News RSS</strong> — the feed <code>india IPO bulk deal block deal buyback</code> picks up a new article published 30 minutes ago:<br>
+            Title: <em>"HDFC Bank sees bulk deal worth ₹500 Cr, promoter increases stake"</em><br>
+            Source tag: <code>&lt;source&gt;Moneycontrol&lt;/source&gt;</code>
+          </div>
+        </div>
+
+        <div class="example-step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>XML parsing</strong> — our custom regex parser extracts: title, link, description, pubDate, and sourceName = "Moneycontrol". The display source is set to "Moneycontrol" (not "Google News").
+          </div>
+        </div>
+
+        <div class="example-step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>Impact scoring</strong> — full text <code>"HDFC Bank sees bulk deal worth ₹500 Cr, promoter increases stake"</code> is scanned against 22 patterns:<br>
+            · Pattern <code>/bulk deal|block deal/i</code> → matches "bulk deal" → <span class="score">+10 pts</span><br>
+            · Pattern <code>/insider buy|promoter buy|promoter increas/i</code> → matches "promoter increases" → <span class="score">+10 pts</span><br>
+            · No other patterns match. Impact score = <strong>20</strong> → capped: <strong>Impact = HIGH</strong>, Timing = immediate
+          </div>
+        </div>
+
+        <div class="example-step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <strong>Noise check</strong> — none of the noise patterns match ("expert says", "stocks to watch" etc.). isNoise = false. No penalty.
+          </div>
+        </div>
+
+        <div class="example-step">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <strong>Freshness</strong> — article was published 30 min ago. Age &lt; 1h → <span class="score">+10 pts</span>
+          </div>
+        </div>
+
+        <div class="example-step">
+          <div class="step-num">6</div>
+          <div class="step-content">
+            <strong>Sentiment</strong> — scans for bullish/bearish words:<br>
+            · "increases" → not in list. "stake" → not in list. But "bulk deal" is associated with buying → let's check actual words...<br>
+            · Title contains no explicit bearish words. Contains implicit positive context. Sentiment = <span class="tag tag-neu">Neutral</span> (no keyword exact match). The article overall is positive but our simple keyword check doesn't find a direct match here.
+          </div>
+        </div>
+
+        <div class="example-step">
+          <div class="step-num">7</div>
+          <div class="step-content">
+            <strong>Related stocks</strong> — full text is scanned against <code>STOCK_KEYWORDS</code>. "hdfc bank" matches → <code>HDFCBANK</code> added. relatedStocks = ["HDFCBANK"]. Stock match bonus: <span class="score">+2 pts</span>
+          </div>
+        </div>
+
+        <div class="example-step">
+          <div class="step-num">8</div>
+          <div class="step-content">
+            <strong>Final total score</strong> = Impact (20) + Freshness (10) + Stock Match (2) = <span class="score">32 pts</span>
+          </div>
+        </div>
+
+        <div class="final-score-box">
+          ✅ Result: This article scores 32 pts — it will appear near the TOP of the news feed, tagged as HIGH impact, IMMEDIATE timing, with HDFCBANK chip shown, source shown as "Moneycontrol". A user opens the app 30 min after the news breaks and sees this at position #1 or #2 — ready to act before most retail traders even notice.
+        </div>
+
+        <div style="margin-top:12px;font-size:12px;color:#8b949e;">
+          <strong>Contrast — Low score example:</strong> "Top 5 stocks to watch tomorrow — expert says Nifty may rally" → matches noise pattern "stocks to watch" + "expert says" → isNoise = true → −5 penalty. Impact patterns: none. Freshness: say 3h old → +6. Score = 0 + 6 + 0 − 5 = <strong>1 pt</strong>. This gets pushed to the bottom of the feed.
+        </div>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:12px;">
+      <strong>Interview answer:</strong> "We don't call Moneycontrol or CNBC directly — instead we use Google News RSS which aggregates all of them. Google News includes a source tag in each article, so we extract the original publisher name (Moneycontrol, LiveMint, CNBC TV18, Business Standard etc.) and display it in the UI. We fetch 6 topic-specific Google News feeds + 2 Economic Times feeds in parallel. Each article is scored using 22 impact-weighted regex patterns for things like bulk deals, quarterly results, RBI actions. We also apply freshness decay and drop anything older than 24 hours. Sentiment is detected using 14 bullish and 16 bearish keywords. Top 80 by combined score are shown. For example, a HDFC Bank bulk deal article scores 20 impact + 10 freshness + 2 stock match = 32 pts and appears at the top."
+    </div>
+  </div>
+
+  <!-- ── TRADE FINDER ── -->
+  <div class="section">
+    <div class="section-title">🔍 Trade Finder <span class="badge badge-orange">5 Strategies</span></div>
+    <div class="section-sub">Scans 30 NSE stocks post-market (4:30 PM IST) daily. Results stored in Supabase → shown next morning. Signals are for the <strong>next trading day</strong>.</div>
+
+    <div class="card" style="margin-bottom:16px;">
+      <div class="card-title">⚠️ Important: How to Read Bullish / Bearish Tags</div>
+      <p style="color:#c9d1d9;font-size:13px;line-height:1.8;">
+        <strong style="color:#3fb950;">Bullish tag</strong> = Pattern suggests the stock will likely move UP next day → potential <strong>BUY / LONG entry</strong> for intraday or swing<br>
+        <strong style="color:#f85149;">Bearish tag</strong> = Pattern suggests the stock will likely move DOWN next day → potential <strong>SELL / SHORT entry</strong> (or avoid buying)<br><br>
+        <strong>These are pattern-based signals, not guaranteed predictions.</strong> Always cross-check with ML prediction badge (shows confidence %) and current news before acting. Use stop-loss.
+      </p>
+    </div>
+
+    <!-- S1 -->
+    <div class="card" style="margin-bottom:12px; border-left: 3px solid #e3b341;">
+      <div class="card-title" style="color:#e3b341;">S1 · STRICT MORNING TREND &nbsp;<span style="color:#8b949e;font-weight:400;">Score: 92/100 — Most Reliable</span></div>
+      <div class="grid" style="margin-top:8px;">
+        <div>
+          <p style="color:#8b949e;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:6px;">Exact Logic (from code)</p>
+          <ul>
+            <li>Looks at 9:30–10:30 AM window (5-min candles)</li>
+            <li>Every single candle must close <strong>higher than previous</strong> (bullish) OR <strong>lower than previous</strong> (bearish)</li>
+            <li>This must be true on <strong>all 3 of the last 3 trading days</strong></li>
+            <li>No exceptions — if even one candle breaks the chain, it's rejected</li>
+            <li>Minimum 4 candles needed per day to qualify</li>
+          </ul>
+        </div>
+        <div>
+          <p style="color:#8b949e;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:6px;">How to Act on Signal</p>
+          <ul>
+            <li><span class="tag tag-bull">Bullish</span> → Next day, watch 9:30–10:00 AM. If stock starts moving up → enter BUY around 9:35–9:45 AM. Target: 10:30 AM high. Exit before 3:15 PM.</li>
+            <li><span class="tag tag-bear">Bearish</span> → Next day, if stock starts dropping at open → short entry or avoid buying. Momentum likely continues down in morning session.</li>
+            <li><strong>Best for:</strong> Intraday morning trades (9:30–11:00 AM window)</li>
+            <li><strong>Why reliable:</strong> 3 consecutive days of perfectly continuous trend = very strong momentum pattern</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- S2 -->
+    <div class="card" style="margin-bottom:12px; border-left: 3px solid #58a6ff;">
+      <div class="card-title" style="color:#58a6ff;">S2 · GENERAL MORNING TREND &nbsp;<span style="color:#8b949e;font-weight:400;">Score: 85/100</span></div>
+      <div class="grid" style="margin-top:8px;">
+        <div>
+          <p style="color:#8b949e;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:6px;">Exact Logic (from code)</p>
+          <ul>
+            <li>Morning window: 9:30–10:30 AM (first candle open → last candle close)</li>
+            <li>Afternoon window: 10:30 AM–3:30 PM (first candle open → last candle close)</li>
+            <li>Morning direction must <strong>match</strong> afternoon direction on that day</li>
+            <li>Afternoon move must be <strong>≥100 pts</strong> (both bullish and bearish)</li>
+            <li>All 3 of the last 3 days must be consistent in the <strong>same direction</strong></li>
+          </ul>
+        </div>
+        <div>
+          <p style="color:#8b949e;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:6px;">How to Act on Signal</p>
+          <ul>
+            <li><span class="tag tag-bull">Bullish</span> → Morning sets tone. Watch first 15 min after 9:30. If bullish → enter BUY. Hold till 1–2 PM (afternoon follow-through expected). Good for full-day intraday.</li>
+            <li><span class="tag tag-bear">Bearish</span> → Morning drop tends to continue all day. If stock opens weak or drops early → short or don't buy. Afternoon likely stays negative.</li>
+            <li><strong>≥100 pts filter</strong> ensures the move is meaningful, not just noise</li>
+            <li><strong>Best for:</strong> Full-day intraday or short swing (1–2 days)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- S3 -->
+    <div class="card" style="margin-bottom:12px; border-left: 3px solid #3fb950;">
+      <div class="card-title" style="color:#3fb950;">S3 · CANDLE PATTERN DETECTION &nbsp;<span style="color:#8b949e;font-weight:400;">Score: 75–80/100</span></div>
+      <div class="grid" style="margin-top:8px;">
+        <div>
+          <p style="color:#8b949e;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:6px;">4 Patterns Detected (5-min candles)</p>
+          <ul>
+            <li><strong>Hammer</strong> <span class="tag tag-bull">Bullish</span> — Long lower wick ≥2× body + small upper wick ≤0.5× body. Buyers rejected the low strongly. Reversal signal.</li>
+            <li><strong>Shooting Star</strong> <span class="tag tag-bear">Bearish</span> — Long upper wick ≥2× body + small lower wick. Price tried to rally, sellers pushed it back. Reversal signal.</li>
+            <li><strong>Strong Bullish Candle</strong> <span class="tag tag-bull">Bullish</span> — Close near high, >0.8% move up, tiny upper wick ≤30% of body. Sustained buying with no rejection.</li>
+            <li><strong>Strong Bearish Candle</strong> <span class="tag tag-bear">Bearish</span> — Close near low, >0.8% drop, tiny lower wick ≤30% of body. Sustained selling with no bounce.</li>
+          </ul>
+        </div>
+        <div>
+          <p style="color:#8b949e;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:6px;">How to Act on Signal</p>
+          <ul>
+            <li><strong>Hammer</strong> → Next day, if stock opens flat/down → BUY near open. Reversal from low expected. Place SL below hammer's low.</li>
+            <li><strong>Shooting Star</strong> → Next day, if stock opens flat/up → consider SHORT near open or avoid buying. Reversal from high expected.</li>
+            <li><strong>Strong Bullish</strong> → Continuation signal. Buy on slight dip from open. Target: yesterday's high. Quick intraday.</li>
+            <li><strong>Strong Bearish</strong> → Continuation DOWN. Short on bounce or avoid. Target: yesterday's low.</li>
+            <li><strong>Difference:</strong> Hammer/Shooting Star = reversal patterns. Strong Bull/Bear = continuation patterns.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- S4 -->
+    <div class="card" style="margin-bottom:12px; border-left: 3px solid #bc8cff;">
+      <div class="card-title" style="color:#bc8cff;">S4 · LONG TREND (≥1 Month) &nbsp;<span style="color:#8b949e;font-weight:400;">Score: 65–95/100 (scales with duration)</span></div>
+      <div class="grid" style="margin-top:8px;">
+        <div>
+          <p style="color:#8b949e;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:6px;">Exact Logic (from code)</p>
+          <ul>
+            <li><strong>Bullish:</strong> Price &gt; 20-day SMA &gt; 50-day SMA for ≥20 consecutive trading days</li>
+            <li><strong>Bearish:</strong> Price &lt; 20-day SMA &lt; 50-day SMA for ≥20 consecutive days</li>
+            <li>Requires 60-day daily candle history</li>
+            <li><strong>Overextension filter:</strong> If price is &gt;15% away from 20MA → rejected (too risky to chase)</li>
+            <li>Score increases with trend duration: 65 (20 days) → up to 95 (2+ months)</li>
+            <li>Entry quality shown: "Excellent" (&lt;5% from 20MA), "Acceptable" (5–10%), "Wait for pullback" (&gt;10%)</li>
+          </ul>
+        </div>
+        <div>
+          <p style="color:#8b949e;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:6px;">How to Act on Signal</p>
+          <ul>
+            <li><span class="tag tag-bull">Bullish</span> → This is a <strong>swing/positional trade</strong>, not intraday. Entry near 20MA on any dip. Hold 3–10 days. Target: recent highs. SL: below 20MA.</li>
+            <li><span class="tag tag-bear">Bearish</span> → Stock in confirmed downtrend. Avoid buying. Short on bounces. Or hold positions in short direction.</li>
+            <li><strong>"Excellent entry zone"</strong> means price is near 20MA right now — ideal low-risk entry point</li>
+            <li><strong>"Wait for pullback"</strong> means stock is extended — entering now = chasing, higher risk of reversal</li>
+            <li><strong>Best for:</strong> 3–15 day swing trades, not intraday</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- S5 -->
+    <div class="card" style="margin-bottom:16px; border-left: 3px solid #f78166;">
+      <div class="card-title" style="color:#f78166;">S5 · HIGH VOLATILITY MORNING MOVE &nbsp;<span style="color:#8b949e;font-weight:400;">Score: 60–95/100</span></div>
+      <div class="grid" style="margin-top:8px;">
+        <div>
+          <p style="color:#8b949e;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:6px;">Exact Logic (from code)</p>
+          <ul>
+            <li>Formula: <code>((High − Low) / Open) × 100</code> in 9:30–10:30 AM window</li>
+            <li>Must be <strong>≥2.2%</strong> (qualifies as volatile) on all 3 recent days</li>
+            <li>Must be <strong>&lt;4.5%</strong> (overextension guard — too wild = reversal risk)</li>
+            <li>At least 2 of 3 days need morning volume ≥1.5× daily average volume → adds +7 score</li>
+            <li>Direction = based on today's overall change% (positive = bullish, negative = bearish)</li>
+          </ul>
+        </div>
+        <div>
+          <p style="color:#8b949e;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:6px;">How to Act on Signal</p>
+          <ul>
+            <li>This signal means the stock has been <strong>consistently active in first hour</strong> for 3 days straight</li>
+            <li><span class="tag tag-bull">Bullish</span> → Wait for stock to start moving at open (9:30–10:00). Enter after 10:05 AM once direction is confirmed. Ride the volatile move. <strong>Exit before 3:15 PM</strong>.</li>
+            <li><span class="tag tag-bear">Bearish</span> → Short after 10:05 AM on confirmation. Same exit rule — before 3:15 PM.</li>
+            <li><strong>"Vol ✓" badge</strong> = volume confirmed → stronger signal, higher conviction</li>
+            <li><strong>Best for:</strong> Pure intraday scalping. Not for overnight holds.</li>
+            <li><strong>Risk:</strong> High volatility = high reward but also quick reversals. Tight SL required.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">Data Pipeline</div>
+        <ul>
+          <li>Yahoo Finance — 60-day daily candles (for S4 SMA calculation)</li>
+          <li>Yahoo Finance — 10-day 5-min candles (for S1, S2, S3, S5)</li>
+          <li>8 stocks fetched in parallel per batch (rate-limit safe)</li>
+          <li>Both candle types fetched simultaneously per stock</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Cron Job Flow (GitHub Actions)</div>
+        <ul>
+          <li>Triggers at <strong>4:30 PM IST</strong> Mon–Fri via GitHub Actions</li>
+          <li>Checks: 0 stocks processed → Market Holiday → skip email ⏭</li>
+          <li>Checks: scan already done today → idempotency skip</li>
+          <li>Stores results → <code>scan_sessions</code> + <code>trade_finder_results</code></li>
+          <li>Sends ✅ Completed email with stats when done</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:12px;">
+      <strong>Interview answer:</strong> "Trade Finder runs 5 custom technical strategies on 30 NSE stocks post-market daily. S1 checks if every 5-min candle in the 9:30–10:30 window closes in the same direction for 3 straight days — the strictest pattern. S2 checks if morning direction matches the full day for 3 days with a ≥100pt move. S3 detects specific candle shapes like Hammer or Shooting Star for reversals. S4 uses 20-day and 50-day SMAs to identify stocks in confirmed 1+ month trends. S5 finds stocks with consistent 2–4.5% volatility in the morning session. A bullish signal means the pattern suggests upward movement next day — potential buy. Bearish means potential downward movement — potential short or avoid."
+    </div>
+  </div>
+
+  <!-- ── ML PREDICTIONS ── -->
+  <div class="section">
+    <div class="section-title">🤖 ML Predictions <span class="badge badge-purple">Nightly Model</span></div>
+    <div class="section-sub">Next-day direction prediction per stock using Logistic Regression — runs nightly at 8 PM IST after the trade scan</div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">Model: Logistic Regression</div>
+        <ul>
+          <li>Library: <strong>scikit-learn</strong> — <code>LogisticRegression</code></li>
+          <li>Type: <strong>Binary classifier</strong> — bullish (1) vs bearish (0)</li>
+          <li>Config: <code>random_state=42, max_iter=1000, C=1.0</code></li>
+          <li>Why Logistic Regression? — simple, fast, interpretable, works well for binary outcome with small dataset (30 days history)</li>
+          <li>Features normalized with <strong>StandardScaler</strong> before training</li>
+          <li>Validation: <strong>5-fold cross-validation</strong> (falls back to 2–5 splits if data is small)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">4 Input Features</div>
+        <table style="margin-top:0;">
+          <thead><tr><th>Feature</th><th>What it is</th></tr></thead>
+          <tbody>
+            <tr><td>score</td><td>Signal strength (0–100) from trade scan</td></tr>
+            <tr><td>change_percent</td><td>Previous day's price change %</td></tr>
+            <tr><td>direction_enc</td><td>Bullish=1, Bearish=0 from strategy</td></tr>
+            <tr><td>strategy_enc</td><td>Strategy weight: S1=5, S2=4, S3=3, S4=2, S5=1</td></tr>
+          </tbody>
+        </table>
+        <p style="color:#8b949e;font-size:11px;margin-top:8px;">Strategy weight reflects reliability: S1 (most reliable) = 5, S5 (most volatile) = 1</p>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:12px;">
+      <div class="card">
+        <div class="card-title">Training & Inference Flow</div>
+        <ul>
+          <li>Fetch <strong>30 days of historical signals</strong> from <code>trade_finder_results</code></li>
+          <li>Minimum <strong>20 rows</strong> required — skip if not enough data</li>
+          <li>Label = next-day actual price change &gt; 0 → bullish, else bearish</li>
+          <li>Split: rows with known next-day outcome = train set; today's signals = predict set</li>
+          <li>Apply <code>StandardScaler</code> → train <code>LogisticRegression</code> → <code>predict_proba()</code></li>
+          <li>Confidence = <code>max(probability) × 100</code> (e.g. 73% confident bullish)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Grading & Accuracy</div>
+        <ul>
+          <li>Next night: compare yesterday's predictions vs actual market outcomes</li>
+          <li>Updates <code>was_correct</code> (boolean) + <code>actual_direction</code> per prediction row</li>
+          <li>Accuracy = correct_predictions / total × 100, stored in <code>ml_daily_accuracy</code></li>
+          <li><strong>≥65%</strong> → Strong <span style="color:#3fb950;">●</span> — use confidently</li>
+          <li><strong>55–64%</strong> → Moderate <span style="color:#e3b341;">●</span> — use with caution</li>
+          <li><strong>&lt;55%</strong> → Weak <span style="color:#f85149;">●</span> — supplementary only</li>
+          <li>Last 14 days + 7-day rolling avg shown on accuracy page</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:12px;">
+      <div class="card">
+        <div class="card-title">GitHub Actions Workflow (ml-predict.yml)</div>
+        <ul>
+          <li>Runs at <strong>8:00 PM IST</strong> Mon–Fri (after 4:30 PM scan + 8 PM ML)</li>
+          <li>Command: <code>python scripts/predict_trend.py</code></li>
+          <li>Email sent with: predictions saved count, training rows, model accuracy</li>
+          <li>Dependencies: scikit-learn 1.5.0, pandas 2.2.2, numpy 1.26.4, supabase 2.10.0</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">How It Appears in UI</div>
+        <ul>
+          <li>Each trade signal in Trade Finder shows an <strong>ML badge</strong></li>
+          <li>Badge shows: direction (↑ Bullish / ↓ Bearish) + confidence % (e.g. 73%)</li>
+          <li>ML badge = secondary confirmation, not primary signal</li>
+          <li>Cross-check: if S1 says Bullish AND ML says Bullish 78% → higher conviction</li>
+          <li>If strategy says Bullish but ML says Bearish 65% → proceed cautiously</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:12px;">
+      <strong>Interview answer:</strong> "We use a Logistic Regression binary classifier from scikit-learn. It trains nightly on 30 days of historical trade signals. The 4 input features are: signal score (0–100), previous day change %, strategy direction encoded as 0 or 1, and strategy type encoded as a weight (1–5 based on reliability). We apply StandardScaler, run 5-fold cross-validation, and use predict_proba() to get a confidence score. The next night, we grade predictions against actual outcomes and track daily accuracy. ≥65% accuracy is our threshold for calling the model reliable. The ML badge appears next to each trade signal as a second opinion, not the primary recommendation."
+    </div>
+  </div>
+
+  <!-- ── DATABASE ── -->
+  <div class="section">
+    <div class="section-title">🗄️ Database Schema (Supabase / Postgres)</div>
+    <table>
+      <thead><tr><th>Table</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td>scan_sessions</td><td>One row per daily scan — date, status (running/completed), stock count, signal count, duration</td></tr>
+        <tr><td>trade_finder_results</td><td>Individual trade signals — stock, strategy, direction, score, candle data, session ID</td></tr>
+        <tr><td>ml_predictions</td><td>Daily per-stock ML predictions — direction, confidence, model_accuracy, was_correct, actual_direction</td></tr>
+        <tr><td>ml_daily_accuracy</td><td>Aggregated view: predictions made, correct count, accuracy %, graded per day</td></tr>
+        <tr><td>profiles</td><td>User profile — name, linked to Supabase auth user ID</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── API ROUTES ── -->
+  <div class="section">
+    <div class="section-title">🔌 API Routes</div>
+    <table>
+      <thead><tr><th>Route</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td>/api/stocks</td><td>Fetches indices, stock quotes, or opportunity detection from Yahoo Finance</td></tr>
+        <tr><td>/api/news</td><td>Pulls + filters RSS news, returns top 80 ranked articles</td></tr>
+        <tr><td>/api/trade-finder/results</td><td>Returns stored scan results by strategy from Supabase</td></tr>
+        <tr><td>/api/ml-predictions</td><td>Returns today's ML prediction map (stock → direction + confidence)</td></tr>
+        <tr><td>/api/ml-accuracy</td><td>Returns 14-day accuracy history + 7-day rolling average</td></tr>
+        <tr><td>/api/cron/trade-finder</td><td>Secured cron endpoint — runs the full market scan pipeline</td></tr>
+        <tr><td>/api/auth/callback</td><td>OAuth callback — handles Google sign-in + fires welcome email for new users</td></tr>
+        <tr><td>/api/email/welcome</td><td>Sends welcome email via Brevo on first sign-up</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── INTERVIEW QUICK ANSWERS ── -->
+  <div class="section">
+    <div class="section-title">💬 Quick Interview Answers</div>
+    <div style="margin-top:12px; display:flex; flex-direction:column; gap:12px;">
+
+      <div class="card">
+        <div class="card-title">Q: What is DT's Terminal?</div>
+        <p style="color:#c9d1d9;font-size:13px;">A free stock market scanner for Indian traders. It shows live NSE/BSE data, filters market news using AI relevance scoring, runs 5 technical strategies daily on 30 stocks, and provides ML-based next-day predictions — all in one dashboard.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Q: How does the Smart News Engine work? What sources?</div>
+        <p style="color:#c9d1d9;font-size:13px;">We use Google News RSS as our primary source — it's an aggregator that pulls from Moneycontrol, LiveMint, CNBC TV18, Business Standard, Economic Times, and more. Each article in the RSS feed has a <code>&lt;source&gt;</code> tag with the original publisher name, so the UI shows "Moneycontrol" or "CNBC TV18" even though we're fetching from a single Google News feed. We run 6 topic-specific Google News feeds + 2 direct Economic Times feeds, all in parallel. Each article is scored with 22 impact-weighted regex patterns (bulk deals, results, RBI actions), freshness decay, and sentiment (14 bullish / 16 bearish keywords). Articles older than 24h are dropped. Top 80 returned.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Q: Can you walk through how a specific news article gets scored?</div>
+        <p style="color:#c9d1d9;font-size:13px;">Sure. Say HDFC Bank has a bulk deal and Moneycontrol publishes "HDFC Bank sees bulk deal worth ₹500 Cr, promoter increases stake" 30 minutes ago. The article appears in our Google News "bulk deal" feed. We parse the RSS XML, extract the <code>&lt;source&gt;</code> tag = "Moneycontrol". Then we scan the text against 22 patterns: "bulk deal" matches (weight 10), "promoter increases" matches (weight 10), total impact = 20. No noise patterns match so no penalty. Freshness: 30 min old = +10 pts. Related stock: "hdfc bank" maps to HDFCBANK symbol = +2 pts. Final score = 32 pts. This article appears at the top of the feed, tagged HIGH impact, with HDFCBANK chip shown and "Moneycontrol" as source — all within 30 seconds of the next news refresh.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Q: What API do you use for real-time market data?</div>
+        <p style="color:#c9d1d9;font-size:13px;">Yahoo Finance public API — <code>query1.finance.yahoo.com/v8/finance/chart</code>. It's free, no API key required. We fetch OHLCV data for indices and stocks. Dashboard polls it every 60 seconds. For the Trade Finder, we fetch 60-day daily + 10-day 5-min candles per stock during the cron job.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Q: How does the daily cron scan work?</div>
+        <p style="color:#c9d1d9;font-size:13px;">GitHub Actions triggers a cron at 4:30 PM IST every weekday. It runs a TypeScript script that fetches candle data for 30 stocks, applies 5 strategy algorithms, scores each result, and stores everything in Supabase. Before running, it checks if the scan was already done today (idempotency). After running, if 0 stocks were processed, it means it was a market holiday — a skip email is sent instead of a completed email.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Q: What ML model do you use and how does it work?</div>
+        <p style="color:#c9d1d9;font-size:13px;">Logistic Regression from scikit-learn — binary classifier predicting bullish (1) or bearish (0) for next day. It trains nightly on 30 days of historical trade signals with 4 features: signal score (0–100), previous day change %, direction encoded as 0/1, and strategy type as a reliability weight (S1=5 most reliable, S5=1 least). StandardScaler normalizes features, 5-fold cross-validation validates the model, then predict_proba() gives a confidence score like 73%. The next night, we grade yesterday's predictions against actual outcomes and track accuracy. ≥65% accuracy = reliable. The ML badge in Trade Finder shows direction + confidence as a second opinion alongside the strategy signal.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Q: Why Logistic Regression and not a neural network or random forest?</div>
+        <p style="color:#c9d1d9;font-size:13px;">We only have 30 days × 30 stocks = ~900 rows maximum. Neural networks and random forests need far more data to avoid overfitting. Logistic Regression is appropriate for small, clean, tabular datasets with binary outcomes. It's also fast to retrain every night (milliseconds), interpretable, and gives well-calibrated probability scores. As the dataset grows over months, we can evaluate switching to gradient boosting or random forest.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <p style="text-align:center; color:#484f58; font-size:11px; margin-top:24px;">DT's Terminal · Internal Feature Reference · Not for public distribution</p>
+
+</div>
+</body>
+</html>
